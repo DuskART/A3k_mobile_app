@@ -1,0 +1,34 @@
+<?xml version='1.2' encoding='utf-8'?>
+<widget id="iod.cordovad.hellocordovadddd" version="1.2.0" xmlns="">
+    <name>Angličtina 3000</name>
+    <description>3000 slovíček</description>
+    <author>
+        Duska games
+    </author>
+
+    <platform name="android">
+      <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/drw.png" />
+      <preference name="AutoHideSplashScreen" value="true" />
+      <preference name="SplashScreenDelay" value="-1" />
+    </platform>
+    
+    <preference name="StatusBarBackgroundColor" value="transparent" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="TransparentNavigationBar" value="true" />
+
+    <platform name="android">
+    <resource-file src="res/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
+
+      <icon background="@color/background" density="ldpi" foreground="res/mipmap-ldpi/ic_launcher.png" />
+      <icon background="@color/background" density="mdpi" foreground="res/mipmap-mdpi/ic_launcher_foreground.png" />
+      <icon background="@color/background" density="hdpi" foreground="res/mipmap-hdpi/ic_launcher_foreground.png" />
+      <icon background="@color/background" density="xhdpi" foreground="res/mipmap-xhdpi/ic_launcher_foreground.png" />
+      <icon background="@color/background" density="xxhdpi" foreground="res/mipmap-xxhdpi/ic_launcher_foreground.png" />
+      <icon background="@color/background" density="xxxhdpi" foreground="res/mipmap-xxxhdpi/ic_launcher_foreground.png" />
+    </platform>
+
+
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

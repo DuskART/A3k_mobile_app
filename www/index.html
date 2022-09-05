@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+
+
+        let localscheme = localStorage.getItem("schéma")
+        let body = document.querySelector("body")
+        if (localscheme) {
+            body.classList = `${localscheme}`
+        }
+    </script>
+
+    <div class="splash">
+        <img class="fade-in logo" src="./img/duska.png" alt="Hello">
+    </div>
+
+    <script>
+        const splash = document.querySelector(".splash")
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+            splash.classList.add("display-none");
+            },3000)
+        })
+
+    </script>
+
+    <div class="backg container">
+        <header><h1>Angličtina 3000</h1></header>
+
+        <div class="texty">
+            <p class="actualni"></p>
+            
+            <p class="slovo"></p>
+            
+            <p class="preklad"></p>
+
+
+
+            <div class="tlacitka">
+                <button class="bCircle green yes">vím</button>
+                <button class="bCircle red unknown">?</button>
+
+            </div>
+
+
+        </div>
+        <div class="ikonky">
+            <input data-modal-target="#modalD" class="ikona" type="image" src="./img/dict.png" />
+                <div class="modalD" id="modalD">
+                    <div class="modalD-h">obnovit původní slovník?</div>
+                    <br>
+                    <br>
+                    <button class="bCircle resetyes">ano</button>
+                    <button class="bCircle resetno">ne</button>
+                    
+                    
+                </div>
+
+
+
+
+
+
+
+
+            <input data-modal-target="#modalI" class="ikona" type="image" src="./img/i.png" />
+
+                <div class="modalI" id="modalI">
+                       
+                    
+
+                    <div class="modalI-text" >3000 anglických slovíček je seřazeno dle frekvence použití v běžně mluvené angličtině. Těchto 3000 nejpoužívanějších slovíček může představovat až 90% mluvené angličtiny, proto se jeví jako nejefektivnější způsob získání základní slovní zásoby právě tento slovník. Pokud klidknete na slovíčko vím, tak se slovíčko odstraní ze slovníku a vám tak do příště zůstanou pouze slovíčka, u kterých si nejste jistí (ikonka ?). Slovník se dá kdykoliv obnovit.</div>
+                </div>
+
+
+
+
+
+
+
+
+
+            <input data-modal-target="#modalT" class="ikona" type="image" src="./img/pall.png" />
+
+                <div class="modalT" id="modalT">
+                    
+                    <div class="ticons">
+                        <button class="theme ocean" ></button>
+                        <button class="theme funky" ></button>
+                        <button class="theme deepblue" ></button>
+                    </div>           
+                    
+                    
+                </div>
+
+
+
+        </div>
+
+        <div id="overlay"></div>
+
+
+
+
+
+
+        
+        
+        
+        
+        
+
+    </div>
+    
+    <script>
+        let ocean = document.querySelector(".ocean")
+        let funky = document.querySelector(".funky")
+        let deep = document.querySelector(".deepblue")
+        
+        
+        let resetno = document.querySelector(".resetno")
+        
+        
+        
+        ocean.addEventListener("click", () => {
+            body.classList = "ocean1"
+            localStorage.setItem("schéma", "ocean1")
+            const modals = document.querySelectorAll(".modalT.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+        funky.addEventListener("click", () => {
+            body.classList = "funky1"
+            localStorage.setItem("schéma", "funky1")
+            const modals = document.querySelectorAll(".modalT.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+        deep.addEventListener("click", () => {
+            body.classList = "deepblue1"
+             localStorage.setItem("schéma", "deepblue1")
+            const modals = document.querySelectorAll(".modalT.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+         })
+        
+
+
+
+
+
+
+
+
+        const openModalBtn = document.querySelectorAll("[data-modal-target]")
+        const closeModalBtn = document.querySelectorAll("[data-close-button]")
+
+        const overlay = document.getElementById("overlay")
+    
+
+        openModalBtn.forEach(button => {
+            button.addEventListener("click", () => {
+                const modal = document.querySelector(button.dataset.modalTarget)
+                openModal(modal)
+            })
+        })
+
+        overlay.addEventListener("click", ()=> {
+            const modals = document.querySelectorAll(".modalI.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+        overlay.addEventListener("click", ()=> {
+            const modals = document.querySelectorAll(".modalT.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+        overlay.addEventListener("click", ()=> {
+            const modals = document.querySelectorAll(".modalD.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+        closeModalBtn.forEach(button => {
+            button.addEventListener("click", () => {
+                const modal = button.closest(".modal")
+                closeModal(modal)
+            })
+        })
+
+
+
+
+
+
+        function openModal (modal) {
+            if (modal == null) return
+            modal.classList.add("active")
+            overlay.classList.add("active")
+        }
+        
+        function closeModal (modal) {
+            if (modal == null) return
+            modal.classList.remove("active")
+            overlay.classList.remove("active")
+        }
+
+
+        
+
+
+
+
+
+
+        resetno.addEventListener("click", () => {
+            const modals = document.querySelectorAll(".modalD.active")
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        })
+
+    </script>
+    <script src="./js/index.js"></script>
+
+    
+    
+</body>
+</html>
